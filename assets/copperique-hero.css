@@ -1,0 +1,389 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --cq-bg: #FAF8F4;
+  --cq-copper: #B87333;
+  --cq-dark-copper: #8C4A22;
+  --cq-bronze: #6E3A1F;
+  --cq-text: #222222;
+  --cq-muted: #666666;
+  --cq-border: rgba(184, 115, 51, 0.15);
+  --cq-gradient: linear-gradient(135deg, #8C4A22 0%, #B87333 50%, #D9A066 100%);
+}
+
+.copperique-hero {
+  position: relative;
+  width: 100%;
+  min-height: 920px;
+  height: auto;
+  background-color: var(--cq-bg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Instrument Sans', sans-serif;
+  color: var(--cq-text);
+}
+
+.hero-bg-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.radial-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 80vw;
+  max-width: 1200px;
+  max-height: 1200px;
+  background: radial-gradient(circle, rgba(184, 115, 51, 0.08) 0%, rgba(250, 248, 244, 0) 70%);
+  border-radius: 50%;
+}
+
+.noise-texture {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-top: 12vh;
+  align-items: center;
+}
+
+/* TOP CONTENT */
+.hero-top-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+.hero-trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--cq-copper);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+}
+
+.badge-icon {
+  width: 16px;
+  height: 16px;
+  stroke: var(--cq-copper);
+}
+
+.hero-heading {
+  font-size: 58px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px 0;
+  max-width: 700px;
+  color: var(--cq-text);
+}
+
+.hero-description {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--cq-muted);
+  max-width: 620px;
+  margin: 0 0 32px 0;
+}
+
+.hero-cta-wrapper {
+  margin-bottom: 80px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 40px;
+  background: var(--cq-gradient);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 40px;
+  box-shadow: 0 8px 20px rgba(184, 115, 51, 0.25);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(184, 115, 51, 0.4);
+  color: #fff;
+}
+
+/* BOTTOM VISUALS */
+.hero-bottom-visuals {
+  position: relative;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.copper-semi-circle {
+  position: absolute;
+  bottom: 0;
+  width: 1000px;
+  max-width: 90vw;
+  height: 500px;
+  max-height: 45vw;
+  background: linear-gradient(180deg, rgba(184, 115, 51, 0.15) 0%, rgba(250, 248, 244, 0) 100%);
+  border-top-left-radius: 1000px;
+  border-top-right-radius: 1000px;
+  z-index: 0;
+}
+
+.floating-products-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 1;
+}
+
+.main-product-wrapper {
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 3;
+  margin-bottom: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.main-bottle {
+  width: 100%;
+  height: auto;
+  max-height: 550px;
+  object-fit: contain;
+}
+
+.floating-glass {
+  position: absolute;
+  height: 35%;
+  bottom: 15%;
+  right: 25%;
+  z-index: 4;
+  filter: blur(1px);
+}
+
+.floating-jug {
+  position: absolute;
+  height: 45%;
+  bottom: 20%;
+  left: 20%;
+  z-index: 2;
+  filter: blur(2px);
+}
+
+/* Particles */
+.particles-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--cq-copper);
+  opacity: 0.6;
+  box-shadow: 0 0 10px var(--cq-copper);
+}
+
+.droplet {
+  position: absolute;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.2));
+  backdrop-filter: blur(2px);
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.p1 { width: 6px; height: 6px; top: 30%; right: 20%; }
+.p2 { width: 4px; height: 4px; bottom: 40%; left: 15%; }
+.p3 { width: 8px; height: 8px; top: 50%; left: 30%; }
+.p4 { width: 5px; height: 5px; bottom: 20%; right: 15%; }
+.p5 { width: 7px; height: 7px; top: 20%; left: 40%; }
+
+.d1 { width: 12px; height: 12px; top: 40%; right: 35%; }
+.d2 { width: 16px; height: 16px; bottom: 30%; left: 35%; }
+
+/* Animations */
+.hero-animated .hero-top-content > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.hero-animated .hero-trust-badge { animation-delay: 0.1s; }
+.hero-animated .hero-heading { animation-delay: 0.3s; }
+.hero-animated .hero-description { animation-delay: 0.5s; }
+.hero-animated .hero-cta-wrapper { animation-delay: 0.7s; }
+
+.hero-animated .main-bottle {
+  animation: floatBottle 6s ease-in-out infinite, shineBottle 8s linear infinite;
+}
+
+.hero-animated .floating-glass {
+  animation: floatGlass 7s ease-in-out infinite reverse;
+}
+
+.hero-animated .floating-jug {
+  animation: floatJug 8s ease-in-out infinite;
+}
+
+.hero-animated .particle, .hero-animated .droplet {
+  animation: floatParticle 10s linear infinite;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatBottle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes floatGlass {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes floatJug {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(-3deg); }
+}
+
+@keyframes floatParticle {
+  from { transform: translateY(0) scale(1); opacity: 0.6; }
+  50% { opacity: 0.2; transform: translateY(-50px) scale(0.8); }
+  to { transform: translateY(-100px) scale(1); opacity: 0; }
+}
+
+@keyframes shineBottle {
+  0%, 80% { filter: brightness(1); }
+  90% { filter: brightness(1.15) contrast(1.1); }
+  100% { filter: brightness(1); }
+}
+
+
+/* Responsive */
+@media (max-width: 991px) { /* Tablet */
+  .copperique-hero {
+    min-height: 800px;
+    height: auto;
+  }
+  
+  .hero-heading {
+    font-size: 46px;
+  }
+  
+  .copper-semi-circle {
+    width: 90vw;
+    height: 45vw;
+  }
+  
+  .floating-glass {
+    right: 15%;
+  }
+  
+  .floating-jug {
+    left: 10%;
+  }
+}
+
+@media (max-width: 575px) { /* Mobile */
+  .copperique-hero {
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  .hero-container {
+    padding-top: 80px;
+  }
+  
+  .hero-heading {
+    font-size: 34px;
+    margin-bottom: 16px;
+  }
+  
+  .hero-description {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .hero-cta-wrapper {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  
+  .btn-primary {
+    width: 100%;
+  }
+  
+  .hero-bottom-visuals {
+    height: 50vh;
+  }
+  
+  .copper-semi-circle {
+    width: 100vw;
+    height: 50vw;
+  }
+  
+  .main-product-wrapper {
+    height: 90%;
+    margin-bottom: -5%;
+  }
+
+  .main-bottle {
+    height: 100%;
+    max-height: none;
+  }
+  
+  .floating-glass {
+    right: 5%;
+    bottom: 20%;
+    height: 30%;
+  }
+  
+  .floating-jug {
+    left: -5%;
+    bottom: 25%;
+    height: 40%;
+  }
+}
