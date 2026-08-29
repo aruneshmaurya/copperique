@@ -15,6 +15,24 @@
 {%- capture megamenu_content -%}
 <div class="megamenu-container_content__html page-grid-{{ megamenu_block.settings.grid }}{% if megamenu_block.settings.text_aligment == "center" %} megamenu-items--text-center{% endif %}" data-parent-megamenu="{{ link.title | handleize  }}"
      style="--megamenu-vertical:{{ megamenu_block.settings.vertical_spacing }}px;">
+  {%- if link.links == blank and megamenu_block.settings.mega_menu_item_name == "Shop Copper" -%}
+    {%- assign mock_categories = "Water Bottles:copper-water-bottle.jpg,Tumblers & Mugs:copper-tumblers-mugs.jpg,Jugs & Dispensers:copper-jug-dispenser.jpg,Gift Sets:copper-gift-set.jpg,Shop All:" | split: "," -%}
+    {%- for cat_item in mock_categories -%}
+      {%- assign parts = cat_item | split: ":" -%}
+      {%- assign cat_title = parts[0] -%}
+      {%- assign cat_img = parts[1] -%}
+      <div>
+        <a href="/collections/all" class="submenu__item submenu__item__level-2 megamenu-item{% if megamenu_block.settings.submenu_size == "big" %} body2{% else %} h5{% endif %} hover-area">
+          {%- if cat_img != blank -%}
+          <div class="image-hover-box__container w-full" style="aspect-ratio: 1; border-radius: 8px; overflow: hidden; margin-bottom: 10px;">
+            <img src="{{ cat_img | asset_url }}" alt="{{ cat_title }}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+          </div>
+          {%- endif -%}
+          <span><span class="submenu__item_text">{{ cat_title }}</span></span>
+        </a>
+      </div>
+    {%- endfor -%}
+  {%- endif -%}
   {%- assign htmlopened = false -%}
   {%- for childlink in link.links -%}
 
@@ -39,6 +57,23 @@
         image_source: image
     -%}
   </div>
+  {%- elsif megamenu_block.settings.mega_menu_item_name == "Shop Copper" or link.title == "Shop Copper" -%}
+    {%- assign fallback_img = '' -%}
+    {%- assign title_downcase = childlink.title | downcase -%}
+    {%- if title_downcase contains 'bottle' or forloop.index == 1 -%}
+      {%- assign fallback_img = 'copper-water-bottle.jpg' | asset_url -%}
+    {%- elsif title_downcase contains 'tumbler' or title_downcase contains 'mug' or forloop.index == 2 -%}
+      {%- assign fallback_img = 'copper-tumblers-mugs.jpg' | asset_url -%}
+    {%- elsif title_downcase contains 'jug' or title_downcase contains 'dispenser' or forloop.index == 3 -%}
+      {%- assign fallback_img = 'copper-jug-dispenser.jpg' | asset_url -%}
+    {%- elsif title_downcase contains 'gift' or forloop.index == 4 -%}
+      {%- assign fallback_img = 'copper-gift-set.jpg' | asset_url -%}
+    {%- endif -%}
+    {%- if fallback_img != '' -%}
+    <div class="image-hover-box__container w-full" style="aspect-ratio: 1; border-radius: 8px; overflow: hidden; margin-bottom: 10px;">
+      <img src="{{ fallback_img }}" alt="{{ childlink.title | escape }}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+    </div>
+    {%- endif -%}
   {%- endif -%}
   {%- endcapture -%}
 

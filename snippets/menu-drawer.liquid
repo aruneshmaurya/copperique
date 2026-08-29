@@ -102,4 +102,84 @@
     {%- endfor -%}
   </ul>
 </nav>
+{%- elsif type == "main-menu" -%}
+<nav class="menu-drawer__navigation menu-drawer__links-padding">
+  <ul class="unstyle-ul">
+    <li>
+      <details>
+        <summary>
+          <div class="menu-drawer__menu-item h4 menu-drawer__menu-item__main">
+            <span>Shop Copper</span>
+            {{- 'icon-arrow-right-small' | append: settings.system_icon_thickness | inline_asset_content -}}
+          </div>
+        </summary>
+        <div class="menu-drawer__submenu">
+          <div class="menu-drawer__inner-submenu">
+            <ul class="unstyle-ul menu-drawer__submenu-content">
+              <li>
+                <button class="menu-drawer__back-button menu-drawer__menu-item link">
+                  {{- 'icon-arrow-left-2' | append: settings.system_icon_thickness | inline_asset_content -}}
+                </button>
+              </li>
+              <li>
+                <a href="/collections/all" class="menu-drawer__menu-item menu-drawer__menu-item__link h4 menu-drawer__menu-item__main">
+                  Shop Copper
+                </a>
+              </li>
+              <li><a href="/collections/all" class="menu-drawer__menu-item h5"><span>Water Bottles</span></a></li>
+              <li><a href="/collections/all" class="menu-drawer__menu-item h5"><span>Tumblers & Mugs</span></a></li>
+              <li><a href="/collections/all" class="menu-drawer__menu-item h5"><span>Jugs & Dispensers</span></a></li>
+              <li><a href="/collections/all" class="menu-drawer__menu-item h5"><span>Gift Sets</span></a></li>
+              <li><a href="/collections/all" class="menu-drawer__menu-item h5"><span>Shop All</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </li>
+    <li>
+      <details>
+        <summary>
+          <div class="menu-drawer__menu-item h4 menu-drawer__menu-item__main">
+            <span>Shop by Use</span>
+            {{- 'icon-arrow-right-small' | append: settings.system_icon_thickness | inline_asset_content -}}
+          </div>
+        </summary>
+        <div class="menu-drawer__submenu">
+          <div class="menu-drawer__inner-submenu">
+            <ul class="unstyle-ul menu-drawer__submenu-content">
+              <li>
+                <button class="menu-drawer__back-button menu-drawer__menu-item link">
+                  {{- 'icon-arrow-left-2' | append: settings.system_icon_thickness | inline_asset_content -}}
+                </button>
+              </li>
+              <li>
+                <a href="/collections/all" class="menu-drawer__menu-item menu-drawer__menu-item__link h4 menu-drawer__menu-item__main">
+                  Shop by Use
+                </a>
+              </li>
+              <li><a href="/collections/all" class="menu-drawer__menu-item h5"><span>For Daily Use</span></a></li>
+              <li><a href="/collections/all" class="menu-drawer__menu-item h5"><span>For Gifting</span></a></li>
+              <li><a href="/collections/all" class="menu-drawer__menu-item h5"><span>For Home & Kitchen</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </li>
+    <li>
+      <a href="/collections/all" class="menu-drawer__menu-item h4 menu-drawer__menu-item__main">
+        <span>Best Sellers</span>
+      </a>
+    </li>
+    <li>
+      <a href="/collections/all" class="menu-drawer__menu-item h4 menu-drawer__menu-item__main">
+        <span>Gifting</span>
+      </a>
+    </li>
+    <li>
+      <a href="/pages/about-us" class="menu-drawer__menu-item h4 menu-drawer__menu-item__main">
+        <span>About</span>
+      </a>
+    </li>
+  </ul>
+</nav>
 {%- endif -%}

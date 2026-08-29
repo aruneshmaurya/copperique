@@ -16,6 +16,52 @@
 {%- assign end_count = end_count | default: linklist.size -%}
 <nav class="list-menu {{ animation }} list-menu--classic {{ custom_class }}">
   <ul class="unstyle-ul list-menu--inline">
+    {%- if linklist == blank or linklist.size == 0 -%}
+      {%- liquid
+        assign shop_copper_block_index = 0
+        for block in section.blocks
+          if block.settings.mega_menu_item_name == 'Shop Copper'
+            assign shop_copper_block_index = forloop.index0
+            break
+          endif
+        endfor
+      -%}
+      <li class="list-menu--hover submenu--megamenu submenu-container submenu--to-left enable-scrollbar-megamenu-js">
+        <a href="/collections/all" class="body2 list-menu__item {{ menu_font_weight }}">
+          <span>Shop Copper{{- 'icon-arrow-down-small' | append: settings.system_icon_thickness | inline_asset_content -}}</span>
+        </a>
+      </li>
+      {%- render "menu-megamenu", link: dummy_copper_link, megamenu_item: shop_copper_block_index, fullwidth_menu: true, page_width: page_width -%}
+
+      <li class="list-menu--hover submenu-container submenu--to-left">
+        <a href="/collections/all" class="body2 list-menu__item {{ menu_font_weight }}">
+          <span>Shop by Use{{- 'icon-arrow-down-small' | append: settings.system_icon_thickness | inline_asset_content -}}</span>
+        </a>
+        <div class="submenu-design__simple">
+          <ul class="unstyle-ul">
+            <li><a href="/collections/all" class="submenu__item body2"><span><span class="submenu__item_text">For Daily Use</span></span></a></li>
+            <li><a href="/collections/all" class="submenu__item body2"><span><span class="submenu__item_text">For Gifting</span></span></a></li>
+            <li><a href="/collections/all" class="submenu__item body2"><span><span class="submenu__item_text">For Home & Kitchen</span></span></a></li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="list-menu--hover">
+        <a href="/collections/all" class="body2 list-menu__item {{ menu_font_weight }}">
+          <span>Best Sellers</span>
+        </a>
+      </li>
+      <li class="list-menu--hover">
+        <a href="/collections/all" class="body2 list-menu__item {{ menu_font_weight }}">
+          <span>Gifting</span>
+        </a>
+      </li>
+      <li class="list-menu--hover">
+        <a href="/pages/about-us" class="body2 list-menu__item {{ menu_font_weight }}">
+          <span>About</span>
+        </a>
+      </li>
+    {%- else -%}
     {%- for link in linklist offset: start_count, limit: end_count -%}
     {%- liquid 
         assign megamenu_item = '|' | append: link.title | append: '%%'
@@ -49,5 +95,6 @@
     </li>
     {%- endif -%}
     {%- endfor -%}
+    {%- endif -%}
   </ul>
 </nav>

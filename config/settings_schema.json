@@ -731,7 +731,7 @@
         "visible_if": "{{ settings.mainmenu_font_type != 'default' }}",
         "type": "range",
         "id": "mainmenu_scale",
-        "min": 100,
+        "min": 50,
         "max": 150,
         "step": 5,
         "unit": "%",
