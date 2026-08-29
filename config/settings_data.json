@@ -93,7 +93,7 @@
     "roundness_tooltip": 6,
     "roundness_checkbox": 14,
     "header_top_spacing_normal": 0,
-    "fixed_header_on_index": true,
+    "fixed_header_on_index": false,
     "logo_transparent": "shopify://shop_images/logo-main.png",
     "logo_max_width_transparent": 240,
     "color_transparent_header": "rgba(0,0,0,0)",

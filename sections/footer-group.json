@@ -132,6 +132,7 @@
       "blocks": {
         "link_list_QJcrLk": {
           "type": "link_list",
+          "disabled": true,
           "settings": {
             "enable_dynamic_grid": false,
             "grid_width_desktop": 25,
