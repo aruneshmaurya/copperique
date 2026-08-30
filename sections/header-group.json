@@ -16,7 +16,7 @@
       "name": "t:header.header_classic",
       "settings": {
         "menu": "main-menu",
-        "width": "page-width",
+        "width": "page-wide",
         "enable__sticky_header": "mobile__desktop",
         "sticky_type": "scroll",
         "logo_zoom_out": false,
