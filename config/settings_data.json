@@ -308,7 +308,7 @@
     "filter_image_ratio": "auto",
     "filter_image_grid": "4",
     "filter_image": "tooltip",
-    "enable_wishlist": false,
+    "enable_wishlist": true,
     "page_wishlist": "wishlist",
     "enable_compare": false,
     "page_compare": "compare",
