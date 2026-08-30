@@ -78,7 +78,7 @@
     "animate_image_show": true,
     "image_hover": "image-hover01",
     "system_icon_thickness": ".svg",
-    "header_links_underline": true,
+    "header_links_underline": false,
     "footer_links_underline": false,
     "matte_effect": true,
     "matte_effect_opacity": 70,
