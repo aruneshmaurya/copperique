@@ -1,0 +1,1295 @@
+{%- comment -%}
+  =============================================================================
+  COPPERIQUE / KANSAWALA LUXURY VIDEO HERO SECTION WITH OVERLAY MENU
+  Inspired directly by https://kansawalas.com/
+  - Floating boxed video banner with rounded corners (20px)
+  - Integrated luxury transparent overlay header menu (desktop & mobile drawer)
+  - Desktop & Mobile HTML5 Autoplay Background Video with Fallback Posters
+  - Triple scrim gradients for optimal text & menu contrast
+  - Frosted glass badge, high-end display typography, white pill CTA button
+  - Dual trust metrics (Rating & Heritage years)
+  - Optional bottom trust marquee ticker (Pure Kansa, Lifetime Buy-back, etc.)
+  =============================================================================
+{%- endcomment -%}
+
+{%- liquid
+  assign corner_radius = section.settings.corner_radius | default: 20
+  assign side_padding = section.settings.side_padding | default: 16
+  assign top_margin = section.settings.top_margin | default: 0
+  assign bottom_margin = section.settings.bottom_margin | default: 20
+  assign overlay_opacity = section.settings.overlay_opacity | default: 70 | divided_by: 100.0
+  assign desktop_height = section.settings.desktop_height | default: '680px'
+  assign mobile_height = section.settings.mobile_height | default: '620px'
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --hero-radius: {{ corner_radius }}px;
+    --hero-side-pad: {{ side_padding }}px;
+    --hero-top-margin: {{ top_margin }}px;
+    --hero-bottom-margin: {{ bottom_margin }}px;
+    --hero-scrim: {{ overlay_opacity }};
+    --hero-title-color: {{ section.settings.color_title | default: '#FFFFFF' }};
+    --hero-sub-color: {{ section.settings.color_sub | default: '#FAF5EE' }};
+    --hero-btn-bg: {{ section.settings.color_btn_bg | default: '#FFFFFF' }};
+    --hero-btn-text: {{ section.settings.color_btn_text | default: '#3C2A1E' }};
+    --hero-btn-hover-bg: {{ section.settings.color_btn_hover_bg | default: '#3C2A1E' }};
+    --hero-btn-hover-text: {{ section.settings.color_btn_hover_text | default: '#FFFFFF' }};
+    width: 100%;
+    margin-top: var(--hero-top-margin);
+    margin-bottom: var(--hero-bottom-margin);
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  /* Outer Boxed Container (Matches Floating Announcement Bar) */
+  .kansawala-hero-container {
+    width: 100%;
+    padding-left: var(--hero-side-pad);
+    padding-right: var(--hero-side-pad);
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  /* Inner Hero Card */
+  .kansawala-hero-card {
+    position: relative;
+    border-radius: var(--hero-radius);
+    overflow: hidden;
+    width: 100%;
+    min-height: {{ desktop_height }};
+    background-color: #1A1410;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Media Background Layer */
+  .kansawala-hero-media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .kansawala-hero-video,
+  .kansawala-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .kansawala-hero-media .mobile-media {
+    display: none;
+  }
+
+  /* Refined Scrim Gradients for 100% Contrast (Top for Header, Bottom for Text) */
+  .kansawala-hero-scrim {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    background:
+      linear-gradient(to top, rgba(0, 0, 0, calc(0.85 * var(--hero-scrim))) 0%, rgba(0, 0, 0, 0) 65%),
+      linear-gradient(to right, rgba(0, 0, 0, calc(0.55 * var(--hero-scrim))) 0%, rgba(0, 0, 0, 0) 55%),
+      linear-gradient(to bottom, rgba(0, 0, 0, calc(0.65 * var(--hero-scrim))) 0%, rgba(0, 0, 0, 0) 35%);
+  }
+
+  /* -------------------------------------------------------------------------
+     OVERLAY NAVIGATION HEADER (KANSAWALA LUXURY STYLE)
+     ------------------------------------------------------------------------- */
+  .kansawala-hero-header {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 44px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Brand Logo */
+  .kansawala-header-logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: #FFFFFF;
+  }
+
+  .kansawala-header-logo img {
+    height: auto;
+    max-height: 46px;
+    width: auto;
+    display: block;
+  }
+
+  .kansawala-header-logo-text {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    line-height: 1;
+  }
+
+  /* Desktop Nav Menu */
+  .kansawala-desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .kansawala-nav-item {
+    position: relative;
+    list-style: none;
+  }
+
+  .kansawala-nav-link {
+    font-family: "Instrument Sans", "Helvetica Neue", "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #FFFFFF;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 0;
+    transition: opacity 0.3s ease, color 0.3s ease;
+  }
+
+  .kansawala-nav-link:hover {
+    opacity: 0.8;
+  }
+
+  .kansawala-nav-link svg {
+    width: 10px;
+    height: 10px;
+    transition: transform 0.25s ease;
+  }
+
+  .kansawala-nav-item:hover .kansawala-nav-link svg {
+    transform: rotate(180deg);
+  }
+
+  /* Luxury Frosted Dropdown Menu */
+  .kansawala-nav-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: rgba(28, 20, 15, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 12px 0;
+    min-width: 200px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.25s ease;
+    z-index: 100;
+    list-style: none;
+    margin: 0;
+  }
+
+  .kansawala-nav-item:hover .kansawala-nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .kansawala-dropdown-link {
+    display: block;
+    padding: 10px 20px;
+    color: #FAF5EE;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .kansawala-dropdown-link:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #FFFFFF;
+  }
+
+  /* Header Icons on Right */
+  .kansawala-header-icons {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .kansawala-header-icon-btn {
+    color: #FFFFFF;
+    background: transparent;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .kansawala-header-icon-btn:hover {
+    opacity: 0.75;
+  }
+
+  .kansawala-header-icon-btn svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    fill: none;
+  }
+
+  /* Live Cart Counter Badge */
+  .kansawala-cart-badge {
+    position: absolute;
+    top: 0px;
+    right: -2px;
+    background: #FFFFFF;
+    color: #3C2A1E;
+    font-size: 10px;
+    font-weight: 700;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  /* Hamburger Menu Toggle (Mobile) */
+  .kansawala-mobile-menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: #FFFFFF;
+    padding: 6px;
+    cursor: pointer;
+  }
+
+  .kansawala-mobile-menu-toggle svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* -------------------------------------------------------------------------
+     HERO CONTENT & METRICS (LOWER AREA)
+     ------------------------------------------------------------------------- */
+  .kansawala-hero-bottom {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 0 65px 75px 65px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .kansawala-hero-content {
+    max-width: 640px;
+  }
+
+  /* Frosted Glass Pill Badge ("Kansa" / "Pure Copper") */
+  .kansawala-hero-badge {
+    display: inline-block;
+    border: 1px solid rgba(250, 245, 238, 0.4);
+    padding: 4px 14px;
+    border-radius: 999px;
+    color: #FFFFFF;
+    font-family: "Instrument Sans", "Helvetica Neue", "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    background: rgba(250, 245, 238, 0.16);
+    margin-bottom: 16px;
+    text-transform: capitalize;
+  }
+
+  /* Hero Main Title */
+  .kansawala-hero-title {
+    font-family: "Instrument Sans", "Helvetica Neue", "Inter", sans-serif;
+    font-size: 54px;
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--hero-title-color);
+    margin: 0 0 16px 0;
+    letter-spacing: -0.5px;
+  }
+
+  /* Hero Subtitle */
+  .kansawala-hero-sub {
+    font-family: "Instrument Sans", "Helvetica Neue", "Inter", sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.35;
+    color: var(--hero-sub-color);
+    margin: 0 0 28px 0;
+    opacity: 0.95;
+  }
+
+  /* Actions wrapper */
+  .kansawala-hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* Primary CTA Pill Button ("SHOP NOW") */
+  .kansawala-hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 16px 36px;
+    border-radius: 999px;
+    background: var(--hero-btn-bg);
+    color: var(--hero-btn-text);
+    font-family: "Instrument Sans", "Helvetica Neue", "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .kansawala-hero-btn:hover {
+    background: var(--hero-btn-hover-bg);
+    color: var(--hero-btn-hover-text);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Secondary Button */
+  .kansawala-hero-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 15px 32px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #FFFFFF;
+    font-family: "Instrument Sans", "Helvetica Neue", "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+  }
+
+  .kansawala-hero-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: #FFFFFF;
+  }
+
+  /* Trust Stats (Bottom Right) */
+  .kansawala-hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    flex-shrink: 0;
+  }
+
+  .kansawala-hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .kansawala-hero-stat-num {
+    font-family: "Instrument Sans", "Helvetica Neue", "Inter", sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .kansawala-hero-stat-label {
+    font-family: "Instrument Sans", "Helvetica Neue", "Inter", sans-serif;
+    font-size: 15px;
+    color: #FAF5EE;
+    font-weight: 400;
+    opacity: 0.9;
+    white-space: nowrap;
+  }
+
+  .kansawala-hero-divider {
+    width: 1px;
+    height: 46px;
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  /* -------------------------------------------------------------------------
+     BOTTOM TRUST MARQUEE TICKER (Pure Kansa, Lifetime Buy-Back, etc.)
+     ------------------------------------------------------------------------- */
+  .kansawala-bottom-ticker {
+    width: 100%;
+    margin-top: 14px;
+    background: {{ section.settings.ticker_bg | default: '#FAF5EE' }};
+    border-radius: var(--hero-radius);
+    border: 1px solid {{ section.settings.ticker_border | default: '#E8DED1' }};
+    color: {{ section.settings.ticker_text_color | default: '#6B3C23' }};
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .kansawala-ticker-track {
+    display: flex;
+    width: max-content;
+    animation: kansawalaTickerScroll 45s linear infinite;
+  }
+
+  .kansawala-bottom-ticker:hover .kansawala-ticker-track {
+    animation-play-state: paused;
+  }
+
+  .kansawala-ticker-group {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    flex-shrink: 0;
+    padding: 16px 24px;
+  }
+
+  .kansawala-ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: "Instrument Sans", "Helvetica Neue", "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+
+  .kansawala-ticker-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+    font-size: 11px;
+    font-weight: 700;
+    opacity: 0.8;
+  }
+
+  @keyframes kansawalaTickerScroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     MOBILE SLIDE-OUT DRAWER
+     ------------------------------------------------------------------------- */
+  .kansawala-drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+  }
+
+  .kansawala-drawer-overlay.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .kansawala-mobile-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 85%;
+    max-width: 380px;
+    background: #FAF5EE;
+    color: #3C2A1E;
+    z-index: 9999;
+    padding: 28px 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-y: auto;
+    box-shadow: 10px 0 40px rgba(0, 0, 0, 0.25);
+  }
+
+  .kansawala-mobile-drawer.is-active {
+    transform: translateX(0);
+  }
+
+  .kansawala-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(107, 60, 35, 0.15);
+  }
+
+  .kansawala-drawer-close {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: #3C2A1E;
+    cursor: pointer;
+    padding: 6px;
+    line-height: 1;
+  }
+
+  .kansawala-drawer-menu {
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .kansawala-drawer-link {
+    font-family: "Instrument Sans", "Helvetica Neue", "Inter", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #3C2A1E;
+    text-decoration: none;
+    display: block;
+  }
+
+  .kansawala-drawer-footer {
+    padding-top: 20px;
+    border-top: 1px solid rgba(107, 60, 35, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .kansawala-drawer-footer a {
+    color: #6B3C23;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  /* -------------------------------------------------------------------------
+     RESPONSIVE BREAKPOINTS
+     ------------------------------------------------------------------------- */
+  @media (max-width: 1024px) {
+    .kansawala-hero-bottom {
+      padding: 0 40px 50px 40px;
+    }
+    .kansawala-hero-title {
+      font-size: 42px;
+    }
+    .kansawala-hero-sub {
+      font-size: 18px;
+    }
+    .kansawala-desktop-nav {
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} {
+      --hero-side-pad: 8px;
+      --hero-radius: 16px;
+    }
+
+    .kansawala-hero-card {
+      min-height: {{ mobile_height }};
+    }
+
+    .kansawala-hero-media .desktop-media {
+      display: none;
+    }
+
+    .kansawala-hero-media .mobile-media {
+      display: block;
+    }
+
+    /* Switch to mobile header */
+    .kansawala-desktop-nav {
+      display: none;
+    }
+
+    .kansawala-mobile-menu-toggle {
+      display: block;
+      padding: 4px;
+    }
+
+    .kansawala-hero-header {
+      padding: 16px 14px;
+      gap: 8px;
+    }
+
+    .kansawala-header-icons {
+      gap: 12px;
+    }
+
+    .kansawala-header-logo-text {
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+
+    /* Stack bottom content on mobile */
+    .kansawala-hero-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0 16px 28px 16px;
+      gap: 24px;
+    }
+
+    .kansawala-hero-title {
+      font-size: 30px;
+      line-height: 1.15;
+      word-break: break-word;
+    }
+
+    .kansawala-hero-sub {
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .kansawala-hero-btn {
+      padding: 14px 28px;
+      font-size: 13px;
+    }
+
+    .kansawala-hero-stats {
+      gap: 20px;
+      width: 100%;
+      justify-content: flex-start;
+    }
+
+    .kansawala-hero-stat-num {
+      font-size: 22px;
+    }
+
+    .kansawala-hero-stat-label {
+      font-size: 12px;
+    }
+
+    .kansawala-ticker-group {
+      gap: 24px;
+      padding: 12px 14px;
+    }
+
+    .kansawala-ticker-item {
+      font-size: 13px;
+    }
+  }
+</style>
+
+<div class="kansawala-hero-container">
+  <div class="kansawala-hero-card" id="kansawala-hero-{{ section.id }}">
+    
+    <!-- Video / Media Layer -->
+    <div class="kansawala-hero-media">
+      {%- if section.settings.video_url != blank -%}
+        <video
+          class="kansawala-hero-video desktop-media"
+          autoplay
+          muted
+          loop
+          playsinline
+          poster="{{ section.settings.image_desktop | image_url: width: 2000 }}"
+        >
+          <source src="{{ section.settings.video_url }}" type="video/mp4">
+        </video>
+      {%- elsif section.settings.image_desktop != blank -%}
+        <img
+          class="kansawala-hero-img desktop-media"
+          src="{{ section.settings.image_desktop | image_url: width: 2000 }}"
+          alt="{{ section.settings.title | escape }}"
+          loading="eager"
+        >
+      {%- else -%}
+        <!-- Fallback authentic luxury video stream (Kansawala CDN preview) -->
+        <video
+          class="kansawala-hero-video desktop-media"
+          autoplay
+          muted
+          loop
+          playsinline
+          poster="https://kansawalas.com/cdn/shop/files/Hero_Mobile.webp?v=1786784737&width=1200"
+        >
+          <source src="https://kansawalas.com/cdn/shop/videos/c/vp/8b1194517a1e4b8b8a2bec83b516b049/8b1194517a1e4b8b8a2bec83b516b049.HD-1080p-2.5Mbps-91724927.mp4" type="video/mp4">
+        </video>
+      {%- endif -%}
+
+      <!-- Mobile Video / Fallback -->
+      {%- if section.settings.video_url_mobile != blank -%}
+        <video
+          class="kansawala-hero-video mobile-media"
+          autoplay
+          muted
+          loop
+          playsinline
+          poster="{{ section.settings.image_mobile | default: section.settings.image_desktop | image_url: width: 1000 }}"
+        >
+          <source src="{{ section.settings.video_url_mobile }}" type="video/mp4">
+        </video>
+      {%- elsif section.settings.image_mobile != blank -%}
+        <img
+          class="kansawala-hero-img mobile-media"
+          src="{{ section.settings.image_mobile | image_url: width: 1000 }}"
+          alt="{{ section.settings.title | escape }}"
+          loading="eager"
+        >
+      {%- else -%}
+        <video
+          class="kansawala-hero-video mobile-media"
+          autoplay
+          muted
+          loop
+          playsinline
+          poster="https://kansawalas.com/cdn/shop/files/Hero_Mobile.webp?v=1786784737&width=1200"
+        >
+          <source src="https://kansawalas.com/cdn/shop/videos/c/vp/8b1194517a1e4b8b8a2bec83b516b049/8b1194517a1e4b8b8a2bec83b516b049.HD-1080p-2.5Mbps-91724927.mp4" type="video/mp4">
+        </video>
+      {%- endif -%}
+
+      <!-- Gradient Scrim for crisp text contrast -->
+      <span class="kansawala-hero-scrim"></span>
+    </div>
+
+    <!-- Integrated Overlay Navigation Header -->
+    {%- if section.settings.enable_header_overlay -%}
+      <header class="kansawala-hero-header">
+        
+        <!-- Mobile Hamburger Toggle -->
+        <button
+          type="button"
+          class="kansawala-mobile-menu-toggle"
+          id="kansawala-drawer-open-{{ section.id }}"
+          aria-label="Open menu"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <!-- Brand Logo -->
+        <a href="{{ routes.root_url }}" class="kansawala-header-logo">
+          {%- if section.settings.logo_image != blank -%}
+            <img
+              src="{{ section.settings.logo_image | image_url: width: 300 }}"
+              alt="{{ shop.name | escape }}"
+              width="{{ section.settings.logo_width | default: 140 }}"
+            >
+          {%- else -%}
+            <span class="kansawala-header-logo-text">{{ section.settings.logo_text | default: shop.name | default: 'COPPERIQUE' }}</span>
+          {%- endif -%}
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <nav class="kansawala-desktop-nav-wrapper">
+          <ul class="kansawala-desktop-nav">
+            {%- assign header_menu = section.settings.menu | default: 'main-menu' -%}
+            {%- for link in linklists[header_menu].links -%}
+              <li class="kansawala-nav-item">
+                <a href="{{ link.url }}" class="kansawala-nav-link">
+                  <span>{{ link.title | escape }}</span>
+                  {%- if link.links != blank -%}
+                    <svg viewBox="0 0 10 6" fill="currentColor">
+                      <path d="M0 0.5L5 5.5L10 0.5H0Z"/>
+                    </svg>
+                  {%- endif -%}
+                </a>
+                {%- if link.links != blank -%}
+                  <ul class="kansawala-nav-dropdown">
+                    {%- for child_link in link.links -%}
+                      <li>
+                        <a href="{{ child_link.url }}" class="kansawala-dropdown-link">
+                          {{ child_link.title | escape }}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+              </li>
+            {%- else -%}
+              <!-- Default luxury fallback menu items -->
+              <li class="kansawala-nav-item">
+                <a href="#" class="kansawala-nav-link">Shop Kansa <svg viewBox="0 0 10 6" fill="currentColor"><path d="M0 0.5L5 5.5L10 0.5H0Z"/></svg></a>
+                <ul class="kansawala-nav-dropdown">
+                  <li><a href="#" class="kansawala-dropdown-link">Dining & Thali Sets</a></li>
+                  <li><a href="#" class="kansawala-dropdown-link">Water Glasses & Jugs</a></li>
+                  <li><a href="#" class="kansawala-dropdown-link">Kansa Bowls</a></li>
+                </ul>
+              </li>
+              <li class="kansawala-nav-item">
+                <a href="#" class="kansawala-nav-link">Shop by Finish <svg viewBox="0 0 10 6" fill="currentColor"><path d="M0 0.5L5 5.5L10 0.5H0Z"/></svg></a>
+                <ul class="kansawala-nav-dropdown">
+                  <li><a href="#" class="kansawala-dropdown-link">Golden Gloss</a></li>
+                  <li><a href="#" class="kansawala-dropdown-link">Hand-Hammered Antique</a></li>
+                  <li><a href="#" class="kansawala-dropdown-link">Matte Bronze</a></li>
+                </ul>
+              </li>
+              <li class="kansawala-nav-item"><a href="#" class="kansawala-nav-link">Best Sellers</a></li>
+              <li class="kansawala-nav-item"><a href="#" class="kansawala-nav-link">Gifting</a></li>
+              <li class="kansawala-nav-item"><a href="#" class="kansawala-nav-link">Brass & Copper</a></li>
+              <li class="kansawala-nav-item"><a href="#" class="kansawala-nav-link">About</a></li>
+            {%- endfor -%}
+          </ul>
+        </nav>
+
+        <!-- Right Header Icons -->
+        <div class="kansawala-header-icons">
+          <!-- Search -->
+          <a href="{{ routes.search_url }}" class="kansawala-header-icon-btn" aria-label="Search">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </a>
+
+          <!-- Customer Account -->
+          <a href="{{ routes.account_url }}" class="kansawala-header-icon-btn" aria-label="Account">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </a>
+
+          <!-- Cart with Live Badge -->
+          <a href="{{ routes.cart_url }}" class="kansawala-header-icon-btn" aria-label="Cart">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span class="kansawala-cart-badge">{{ cart.item_count | default: 0 }}</span>
+          </a>
+        </div>
+      </header>
+    {%- endif -%}
+
+    <!-- Lower Content & Social Proof Metrics -->
+    <div class="kansawala-hero-bottom">
+      <div class="kansawala-hero-content">
+        {%- if section.settings.badge_text != blank -%}
+          <span class="kansawala-hero-badge">{{ section.settings.badge_text | escape }}</span>
+        {%- endif -%}
+
+        {%- if section.settings.title != blank -%}
+          <h1 class="kansawala-hero-title">{{ section.settings.title | escape }}</h1>
+        {%- endif -%}
+
+        {%- if section.settings.sub_title != blank -%}
+          <p class="kansawala-hero-sub">{{ section.settings.sub_title | escape }}</p>
+        {%- endif -%}
+
+        <div class="kansawala-hero-actions">
+          {%- if section.settings.btn_label != blank -%}
+            <a href="{{ section.settings.btn_link | default: '/collections/all' }}" class="kansawala-hero-btn">
+              {{ section.settings.btn_label | escape }}
+            </a>
+          {%- endif -%}
+
+          {%- if section.settings.secondary_btn_label != blank -%}
+            <a href="{{ section.settings.secondary_btn_link }}" class="kansawala-hero-btn-secondary">
+              {{ section.settings.secondary_btn_label | escape }}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <!-- Trust Stats Overlay -->
+      {%- if section.settings.show_stats -%}
+        <div class="kansawala-hero-stats">
+          <div class="kansawala-hero-stat">
+            <span class="kansawala-hero-stat-num">{{ section.settings.stat_1_num | default: '4.7 ★' }}</span>
+            <span class="kansawala-hero-stat-label">{{ section.settings.stat_1_label | default: 'From 1,067+ families' }}</span>
+          </div>
+
+          <span class="kansawala-hero-divider"></span>
+
+          <div class="kansawala-hero-stat">
+            <span class="kansawala-hero-stat-num">{{ section.settings.stat_2_num | default: '75+' }}</span>
+            <span class="kansawala-hero-stat-label">{{ section.settings.stat_2_label | default: 'Years of craftsmanship' }}</span>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+
+  </div>
+
+  <!-- Bottom Trust Marquee Ticker (Kansawala Style) -->
+  {%- if section.settings.show_bottom_ticker -%}
+    <div class="kansawala-bottom-ticker">
+      <div class="kansawala-ticker-track">
+        <!-- Loop 1 -->
+        <div class="kansawala-ticker-group">
+          <span class="kansawala-ticker-item"><span class="kansawala-ticker-icon">K</span> {{ section.settings.ticker_item_1 | default: 'Pure 78:22 Kansa' }}</span>
+          <span class="kansawala-ticker-item"><span class="kansawala-ticker-icon">K</span> {{ section.settings.ticker_item_2 | default: 'Hand-Beaten in Sihor' }}</span>
+          <span class="kansawala-ticker-item"><span class="kansawala-ticker-icon">K</span> {{ section.settings.ticker_item_3 | default: 'Lifetime Buy-Back' }}</span>
+          <span class="kansawala-ticker-item"><span class="kansawala-ticker-icon">K</span> {{ section.settings.ticker_item_4 | default: 'COD & Easy Returns' }}</span>
+        </div>
+        <!-- Loop 2 (Seamless Infinite Clone) -->
+        <div class="kansawala-ticker-group" aria-hidden="true">
+          <span class="kansawala-ticker-item"><span class="kansawala-ticker-icon">K</span> {{ section.settings.ticker_item_1 | default: 'Pure 78:22 Kansa' }}</span>
+          <span class="kansawala-ticker-item"><span class="kansawala-ticker-icon">K</span> {{ section.settings.ticker_item_2 | default: 'Hand-Beaten in Sihor' }}</span>
+          <span class="kansawala-ticker-item"><span class="kansawala-ticker-icon">K</span> {{ section.settings.ticker_item_3 | default: 'Lifetime Buy-Back' }}</span>
+          <span class="kansawala-ticker-item"><span class="kansawala-ticker-icon">K</span> {{ section.settings.ticker_item_4 | default: 'COD & Easy Returns' }}</span>
+        </div>
+        <!-- Loop 3 -->
+        <div class="kansawala-ticker-group" aria-hidden="true">
+          <span class="kansawala-ticker-item"><span class="kansawala-ticker-icon">K</span> {{ section.settings.ticker_item_1 | default: 'Pure 78:22 Kansa' }}</span>
+          <span class="kansawala-ticker-item"><span class="kansawala-ticker-icon">K</span> {{ section.settings.ticker_item_2 | default: 'Hand-Beaten in Sihor' }}</span>
+          <span class="kansawala-ticker-item"><span class="kansawala-ticker-icon">K</span> {{ section.settings.ticker_item_3 | default: 'Lifetime Buy-Back' }}</span>
+          <span class="kansawala-ticker-item"><span class="kansawala-ticker-icon">K</span> {{ section.settings.ticker_item_4 | default: 'COD & Easy Returns' }}</span>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+<!-- Mobile Slide-Out Drawer -->
+{%- if section.settings.enable_header_overlay -%}
+  <div class="kansawala-drawer-overlay" id="kansawala-drawer-overlay-{{ section.id }}"></div>
+  <div class="kansawala-mobile-drawer" id="kansawala-drawer-{{ section.id }}">
+    <div class="kansawala-drawer-header">
+      <span class="kansawala-header-logo-text" style="color: #3C2A1E;">{{ section.settings.logo_text | default: shop.name | default: 'COPPERIQUE' }}</span>
+      <button type="button" class="kansawala-drawer-close" id="kansawala-drawer-close-{{ section.id }}" aria-label="Close menu">✕</button>
+    </div>
+
+    <ul class="kansawala-drawer-menu">
+      {%- for link in linklists[header_menu].links -%}
+        <li>
+          <a href="{{ link.url }}" class="kansawala-drawer-link">{{ link.title | escape }}</a>
+        </li>
+      {%- else -%}
+        <li><a href="#" class="kansawala-drawer-link">Shop Kansa</a></li>
+        <li><a href="#" class="kansawala-drawer-link">Shop by Finish</a></li>
+        <li><a href="#" class="kansawala-drawer-link">Best Sellers</a></li>
+        <li><a href="#" class="kansawala-drawer-link">Gifting Sets</a></li>
+        <li><a href="#" class="kansawala-drawer-link">Brass & Copper</a></li>
+        <li><a href="#" class="kansawala-drawer-link">Our Heritage</a></li>
+      {%- endfor -%}
+    </ul>
+
+    <div class="kansawala-drawer-footer">
+      <a href="{{ routes.account_url }}">My Account</a>
+      <a href="{{ routes.search_url }}">Search Catalog</a>
+      <p style="font-size: 12px; color: #8A715C; margin: 0;">Handcrafted luxury wellness metalware.</p>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const openBtn = document.getElementById('kansawala-drawer-open-{{ section.id }}');
+      const closeBtn = document.getElementById('kansawala-drawer-close-{{ section.id }}');
+      const drawer = document.getElementById('kansawala-drawer-{{ section.id }}');
+      const overlay = document.getElementById('kansawala-drawer-overlay-{{ section.id }}');
+
+      function openDrawer() {
+        if (drawer && overlay) {
+          drawer.classList.add('is-active');
+          overlay.classList.add('is-active');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      function closeDrawer() {
+        if (drawer && overlay) {
+          drawer.classList.remove('is-active');
+          overlay.classList.remove('is-active');
+          document.body.style.overflow = '';
+        }
+      }
+
+      if (openBtn) openBtn.addEventListener('click', openDrawer);
+      if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+      if (overlay) overlay.addEventListener('click', closeDrawer);
+    });
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Luxury Video Hero",
+  "tag": "section",
+  "class": "kansawala-hero-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Integrated Overlay Navigation Menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_header_overlay",
+      "default": true,
+      "label": "Enable Header Overlay on Video"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logo Image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 60,
+      "max": 260,
+      "step": 5,
+      "unit": "px",
+      "default": 140,
+      "label": "Logo Width"
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "default": "COPPERIQUE",
+      "label": "Logo Text (Fallback if no image)"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Navigation Menu"
+    },
+    {
+      "type": "header",
+      "content": "Video & Media Background"
+    },
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "Desktop Video URL (MP4 / WebM)",
+      "info": "Paste MP4 link from Shopify Files or external CDN"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Desktop Poster / Fallback Image"
+    },
+    {
+      "type": "text",
+      "id": "video_url_mobile",
+      "label": "Mobile Video URL (Optional 9:16 / 4:5 MP4)",
+      "info": "Leave blank to use desktop video on mobile"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Poster / Fallback Image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 70,
+      "label": "Gradient Scrim Opacity (Darkness)"
+    },
+    {
+      "type": "header",
+      "content": "Hero Content"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "default": "Kansa",
+      "label": "Pill Badge Text (e.g. Kansa / Pure Copper)"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "India's Oldest Metal, Still Hand-Made.",
+      "label": "Main Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "sub_title",
+      "default": "By one family, in Sihor, since 1945.",
+      "label": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "default": "SHOP NOW",
+      "label": "Primary Button Label"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_btn_label",
+      "label": "Secondary Button Label (Optional)"
+    },
+    {
+      "type": "url",
+      "id": "secondary_btn_link",
+      "label": "Secondary Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Social Proof & Trust Stats"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stats",
+      "default": true,
+      "label": "Show Trust Stats Overlay"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_num",
+      "default": "4.7 ★",
+      "label": "Stat 1 Number / Star Rating"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "default": "From 1,067+ families",
+      "label": "Stat 1 Label"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_num",
+      "default": "75+",
+      "label": "Stat 2 Number"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "default": "Years of craftsmanship",
+      "label": "Stat 2 Label"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Feature Marquee Ticker"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bottom_ticker",
+      "default": true,
+      "label": "Show Bottom Trust Ticker"
+    },
+    {
+      "type": "text",
+      "id": "ticker_item_1",
+      "default": "Pure 78:22 Kansa",
+      "label": "Ticker Item 1"
+    },
+    {
+      "type": "text",
+      "id": "ticker_item_2",
+      "default": "Hand-Beaten in Sihor",
+      "label": "Ticker Item 2"
+    },
+    {
+      "type": "text",
+      "id": "ticker_item_3",
+      "default": "Lifetime Buy-Back",
+      "label": "Ticker Item 3"
+    },
+    {
+      "type": "text",
+      "id": "ticker_item_4",
+      "default": "COD & Easy Returns",
+      "label": "Ticker Item 4"
+    },
+    {
+      "type": "color",
+      "id": "ticker_bg",
+      "default": "#FAF5EE",
+      "label": "Ticker Background Color"
+    },
+    {
+      "type": "color",
+      "id": "ticker_text_color",
+      "default": "#6B3C23",
+      "label": "Ticker Text Color"
+    },
+    {
+      "type": "header",
+      "content": "Card Layout & Dimensions"
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 20,
+      "label": "Card Corner Radius"
+    },
+    {
+      "type": "range",
+      "id": "side_padding",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16,
+      "label": "Card Side Inset / Margin"
+    },
+    {
+      "type": "text",
+      "id": "desktop_height",
+      "default": "680px",
+      "label": "Desktop Height (e.g. 680px, 80vh)"
+    },
+    {
+      "type": "text",
+      "id": "mobile_height",
+      "default": "620px",
+      "label": "Mobile Height (e.g. 620px, 85vh)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Luxury Video Hero (Kansawala Style)",
+      "category": "Hero"
+    }
+  ]
+}
+{% endschema %}
