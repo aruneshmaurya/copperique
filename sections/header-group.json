@@ -33,7 +33,7 @@
         "icons_text_mobile": "hide",
         "show_top_line": false,
         "show_bottom_line": false,
-        "width_line": "content",
+        "width_line": "default",
         "background_width": "fullwidth",
         "background": "hide",
         "color_background": "rgba(0,0,0,0)",

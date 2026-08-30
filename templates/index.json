@@ -55,7 +55,7 @@
     },
     "kansawala_hero_video_idqzRE": {
       "type": "kansawala-hero-video",
-      "name": "Luxury Video Hero (Kansawala Style)",
+      "name": "Luxury Video Hero",
       "settings": {
         "enable_header_overlay": false,
         "logo_image": "shopify://shop_images/logo-main.png",
