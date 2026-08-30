@@ -65,9 +65,9 @@
         "video_url": "",
         "video_url_mobile": "",
         "overlay_opacity": 70,
-        "badge_text": "Kansa",
+        "badge_text": "COPPERIQUE",
         "title": "India's Oldest Metal, Still Hand-Made.",
-        "sub_title": "By one family, in Sihor, since 1945.",
+        "sub_title": "By one family, in India, since 2025.",
         "btn_label": "SHOP NOW",
         "btn_link": "",
         "secondary_btn_label": "",
@@ -78,16 +78,14 @@
         "stat_2_num": "75+",
         "stat_2_label": "Years of craftsmanship",
         "show_bottom_ticker": true,
-        "ticker_item_1": "Pure 78:22 Kansa",
-        "ticker_item_2": "Hand-Beaten in Sihor",
+        "ticker_item_1": "Pure 78:22 Copper",
+        "ticker_item_2": "Hand made in India",
         "ticker_item_3": "Lifetime Buy-Back",
         "ticker_item_4": "COD & Easy Returns",
         "ticker_bg": "#FAF5EE",
         "ticker_text_color": "#6B3C23",
         "corner_radius": 20,
-        "side_padding": 16,
-        "desktop_height": "680px",
-        "mobile_height": "620px"
+        "side_padding": 16
       }
     }
   },
