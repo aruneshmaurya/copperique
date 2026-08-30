@@ -1,350 +1,35 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "Header",
   "type": "header",
   "sections": {
-    "ticker_text_header": {
-      "type": "ticker-text-header",
-      "blocks": {
-        "text_1": {
-          "type": "text",
-          "settings": {
-            "text": "Pay a little now, the rest on delivery",
-            "font_size": 13
-          }
-        },
-        "text_2": {
-          "type": "text",
-          "settings": {
-            "text": "Free shipping over ₹999",
-            "font_size": 13
-          }
-        },
-        "text_3": {
-          "type": "text",
-          "settings": {
-            "text": "Lifetime polish guarantee on every piece",
-            "font_size": 13
-          }
-        }
-      },
-      "block_order": [
-        "text_1",
-        "text_2",
-        "text_3"
-      ],
-      "name": "Scrolling Text and Images",
-      "settings": {
-        "top_spacing": "none",
-        "h_space": 60,
-        "ticker_time": 25,
-        "direction": "ticker--animation-to-left",
-        "background": "color",
-        "color_background": "#FAF5EE",
-        "v_padding": 10,
-        "color_base": "#6B3C23",
-        "color_accent": "#6B3C23",
-        "color_lines": "rgba(0,0,0,0)",
-        "show_lines": false,
-        "show_lines_bottom": false
-      }
-    },
-    "popup_search_modules_jWTP6h": {
-      "type": "popup-search-modules",
-      "blocks": {
-        "buttons_list_mKAzmL": {
-          "type": "buttons-list",
-          "settings": {
-            "main_heading": "Popular searches",
-            "menu": "main-menu",
-            "show_icon": true,
-            "button_border_width_main": 1,
-            "show_button_bg": true,
-            "color_button": "#ffffff",
-            "color_button_gradient": "",
-            "color_button_border": "#d9d9d9",
-            "color_button_text": "rgba(0,0,0,0)",
-            "show_button_bg_hover": true,
-            "color_button_hover": "rgba(0,0,0,0)",
-            "color_button_gradient_hover": "",
-            "color_button_border_hover": "rgba(0,0,0,0)",
-            "color_button_text_hover": "#ffffff"
-          }
-        },
-        "collection_list_fFHFpT": {
-          "type": "collection-list",
-          "settings": {
-            "main_heading": "",
-            "color_text_link": "rgba(0,0,0,0)",
-            "color_text_link_hover": "rgba(0,0,0,0)",
-            "color_desc": "rgba(0,0,0,0)"
-          },
-          "blocks": {
-            "collection_item_UyTBJ9": {
-              "type": "collection-item",
-              "settings": {
-                "collection": "",
-                "collection_name": "",
-                "custom_link": ""
-              }
-            },
-            "collection_item_fXwAR9": {
-              "type": "collection-item",
-              "settings": {
-                "collection": "",
-                "collection_name": "",
-                "custom_link": ""
-              }
-            },
-            "collection_item_kfQN9F": {
-              "type": "collection-item",
-              "settings": {
-                "collection": "",
-                "collection_name": "",
-                "custom_link": ""
-              }
-            },
-            "collection_item_LPyDYH": {
-              "type": "collection-item",
-              "settings": {
-                "collection": "",
-                "collection_name": "",
-                "custom_link": ""
-              }
-            },
-            "collection_item_XUCycA": {
-              "type": "collection-item",
-              "settings": {
-                "collection": "",
-                "collection_name": "",
-                "custom_link": ""
-              }
-            },
-            "collection_item_fihPed": {
-              "type": "collection-item",
-              "settings": {
-                "collection": "",
-                "collection_name": "",
-                "custom_link": ""
-              }
-            }
-          },
-          "block_order": [
-            "collection_item_UyTBJ9",
-            "collection_item_fXwAR9",
-            "collection_item_kfQN9F",
-            "collection_item_LPyDYH",
-            "collection_item_XUCycA",
-            "collection_item_fihPed"
-          ]
-        },
-        "products_list_YLQifc": {
-          "type": "products-list",
-          "disabled": true,
-          "settings": {
-            "collection": "",
-            "main_heading": "Most-Loved Products",
-            "color_meta_products": "rgba(0,0,0,0)",
-            "color_meta_products_hover": "rgba(0,0,0,0)",
-            "color_product_name": "rgba(0,0,0,0)",
-            "color_product_name_hover": "rgba(0,0,0,0)",
-            "color_price": "rgba(0,0,0,0)",
-            "color_save_price": "rgba(0,0,0,0)",
-            "color_old_price": "rgba(0,0,0,0)",
-            "color_interface_button": "rgba(0,0,0,0)",
-            "color_interface_button_text": "rgba(0,0,0,0)",
-            "color_interface_button_hover": "rgba(0,0,0,0)",
-            "color_interface_button_text_hover": "rgba(0,0,0,0)",
-            "color_active_rating": "rgba(0,0,0,0)",
-            "color_base_rating": "rgba(0,0,0,0)"
-          }
-        },
-        "banners_list_WnAdUN": {
-          "type": "banners-list",
-          "disabled": true,
-          "settings": {
-            "main_heading": "Banners"
-          },
-          "blocks": {
-            "banner_item_WMBbqk": {
-              "type": "banner-item",
-              "settings": {
-                "content_type": "image",
-                "image_overlay_opacity": 100,
-                "image_overlay_fill": false,
-                "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-                "video_slide_mode": "autoplay_muted",
-                "url": "",
-                "heading_text": "Heading",
-                "desc": "<p>Tell more about your product, collection...</p>",
-                "heading_after_description": false,
-                "button_name": "",
-                "heading_size_px": 40,
-                "heading_size_px_tablet": 32,
-                "heading_size_px_mobile": 32,
-                "hover_underline": true,
-                "position": "align-items-end justify-content-center",
-                "position_mobile": "align-items-end-m justify-content-center-m",
-                "text_align": "text-center",
-                "description_width": 80,
-                "description_width_tablet": 80,
-                "description_width_mobile": 80,
-                "show_background": false,
-                "box_opacity": 90,
-                "heading_text_link": "#ffffff",
-                "heading_text_link_hover": "#ffffff",
-                "color_desc": "#ffffff",
-                "color_desc_hover": "rgba(0,0,0,0)",
-                "show_button_bg": true,
-                "color_button": "rgba(0,0,0,0)",
-                "color_button_gradient": "",
-                "color_button_border": "rgba(0,0,0,0)",
-                "color_button_text": "rgba(0,0,0,0)",
-                "show_button_bg_hover": true,
-                "color_button_hover": "rgba(0,0,0,0)",
-                "color_button_gradient_hover": "",
-                "color_button_border_hover": "rgba(0,0,0,0)",
-                "color_button_text_hover": "rgba(0,0,0,0)",
-                "show_shadow_button": true,
-                "color_shadow_button": "rgba(0,0,0,0)",
-                "color_shadow_hover_button": "rgba(0,0,0,0)",
-                "color_background_box": "rgba(0,0,0,0)",
-                "color_background_box_hover": "rgba(0,0,0,0)",
-                "color_media_background": "rgba(0,0,0,0)",
-                "color_media_icon": "rgba(0,0,0,0)",
-                "color_media_background_hover": "rgba(0,0,0,0)",
-                "color_media_icon_hover": "rgba(0,0,0,0)",
-                "image_overlay_color": "rgba(0,0,0,0)"
-              }
-            }
-          },
-          "block_order": [
-            "banner_item_WMBbqk"
-          ]
-        }
-      },
-      "block_order": [
-        "buttons_list_mKAzmL",
-        "collection_list_fFHFpT",
-        "products_list_YLQifc",
-        "banners_list_WnAdUN"
-      ],
-      "name": "Search modules",
-      "settings": {
-        "heading_aligment": "text-center",
-        "grid_collection": "page-grid-6",
-        "grid_tablet_collection": "page-grid-st-2",
-        "image_ratio_collection": "auto",
-        "text_align_collection": "text-center",
-        "hover_underline_collection": true,
-        "show_products_count_collection": true,
-        "grid_products": "page-grid-6",
-        "grid_tablet_products": "page-grid-st-2",
-        "image_ratio_product": "auto",
-        "product_limit": 6,
-        "text_align": "text-center",
-        "image_action": "show_secondary_image",
-        "hover_underline": true,
-        "show_vendor": true,
-        "show_price": true,
-        "truncate_product_name": false,
-        "enable_rating_product_card": true,
-        "grid": "page-grid-3",
-        "grid_tablet": "page-grid-st-1",
-        "mobile_grid": "1",
-        "image_ratio": "auto",
-        "image_ratio_mobile": "auto",
-        "image_hover": "default",
-        "color_base": "rgba(0,0,0,0)",
-        "color_accent": "#7C6B4E",
-        "color_search_main_heading": "rgba(0,0,0,0)",
-        "color_search_background": "rgba(0,0,0,0)",
-        "color_modal_overlay": "rgba(0,0,0,0)",
-        "color_search_close": "rgba(0,0,0,0)",
-        "color_search_input_background": "#ffffff",
-        "color_search_input_border": "#ffffff",
-        "color_search_input_text": "#2B2118",
-        "color_search_input_icon": "#2B2118",
-        "color_search_input_background_hover": "rgba(0,0,0,0)",
-        "color_search_input_border_hover": "rgba(0,0,0,0)",
-        "color_search_input_outline_hover": "rgba(0,0,0,0)",
-        "color_search_input_text_hover": "#2B2118",
-        "color_search_input_icon_hover": "#2B2118",
-        "color_search_heading": "rgba(0,0,0,0)",
-        "color_search_link": "rgba(0,0,0,0)",
-        "color_search_link_hover": "rgba(0,0,0,0)",
-        "color_search_product_vendor": "rgba(0,0,0,0)",
-        "color_search_product_name": "rgba(0,0,0,0)",
-        "color_search_product_name_hover": "rgba(0,0,0,0)",
-        "color_search_product_price": "rgba(0,0,0,0)",
-        "color_search_product_price_sale": "rgba(0,0,0,0)",
-        "color_search_product_price_old": "rgba(0,0,0,0)",
-        "color_search_show_all": "rgba(0,0,0,0)",
-        "color_search_show_all_hover": "rgba(0,0,0,0)",
-        "color_search_lines": "rgba(0,0,0,0)",
-        "color_active_rating": "rgba(0,0,0,0)",
-        "color_base_rating": "rgba(0,0,0,0)"
-      }
-    },
-    "megamenu_modules_YzEhUC": {
-      "type": "megamenu-modules",
-      "blocks": {
-        "megamenu_item_rQhhbw": {
-          "type": "megamenu-item",
-          "name": "Megamenu item",
-          "settings": {
-            "heading": "Home",
-            "heading_closed_menu": false
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "megamenu_item_rQhhbw"
-      ],
-      "name": "Megamenu modules",
-      "settings": {
-        "image_hover": "default"
-      }
-    },
     "header_Vx6JW4": {
       "type": "header",
-      "blocks": {
-        "mega_menu_p8KUPQ": {
-          "type": "mega_menu",
-          "settings": {
-            "admin_open_megamenu": false,
-            "mega_menu_item_name": "Shop Copper",
-            "grid": "4",
-            "submenu_size": "big",
-            "group_items": true,
-            "text_aligment": "left",
-            "image_hover": "default",
-            "image_ratio": "1",
-            "color_heading": "#2B2118",
-            "color_heading_hover": "#7C6B4E",
-            "color_link": "#4A4038",
-            "color_link_hover": "#7C6B4E",
-            "color_background": "#FFFFFF",
-            "color_shadow": "rgba(0,0,0,0.12)"
-          }
-        }
-      },
-      "block_order": [
-        "mega_menu_p8KUPQ"
-      ],
       "name": "Header: Classic menu",
       "settings": {
         "menu": "main-menu",
         "width": "default",
-        "enable__sticky_header": "desktop",
+        "enable__sticky_header": "mobile__desktop",
         "sticky_type": "scroll",
-        "logo_svg": "<svg width=\"150\" height=\"34\" viewBox=\"0 0 150 34\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g transform=\"translate(0, 2)\"><circle cx=\"15\" cy=\"15\" r=\"14\" stroke=\"currentColor\" stroke-width=\"1.8\"/><path d=\"M15 6a9 9 0 0 0-9 9c0 4.97 4.03 9 9 9s9-4.03 9-9a9 9 0 0 0-9-9z\" stroke=\"currentColor\" stroke-width=\"1.4\"/><line x1=\"15\" y1=\"1\" x2=\"15\" y2=\"6\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><line x1=\"15\" y1=\"24\" x2=\"15\" y2=\"29\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"/></g><text x=\"38\" y=\"19\" font-family=\"'Poppins', sans-serif\" font-size=\"16\" font-weight=\"600\" letter-spacing=\"0.16em\" fill=\"currentColor\">COPPERIQUE</text><text x=\"38.5\" y=\"30\" font-family=\"'Poppins', sans-serif\" font-size=\"6.8\" font-weight=\"500\" letter-spacing=\"0.22em\" fill=\"currentColor\" opacity=\"0.85\">PURE COPPER, MADE TO LAST</text></svg>",
-        "logo_max_width": 150,
-        "logo_svg_mobile": "<svg width=\"90\" height=\"22\" viewBox=\"0 0 90 22\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g transform=\"translate(0, 1)\"><circle cx=\"10\" cy=\"10\" r=\"9\" stroke=\"currentColor\" stroke-width=\"1.5\"/><path d=\"M10 4a6 6 0 0 0-6 6c0 3.31 2.69 6 6 6s6-2.69 6-6a6 6 0 0 0-6-6z\" stroke=\"currentColor\" stroke-width=\"1.1\"/><line x1=\"10\" y1=\"0.5\" x2=\"10\" y2=\"4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/><line x1=\"10\" y1=\"16\" x2=\"10\" y2=\"19.5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"/></g><text x=\"25\" y=\"13\" font-family=\"'Poppins', sans-serif\" font-size=\"10.5\" font-weight=\"600\" letter-spacing=\"0.14em\" fill=\"currentColor\">COPPERIQUE</text><text x=\"25.5\" y=\"20.5\" font-family=\"'Poppins', sans-serif\" font-size=\"4.5\" font-weight=\"500\" letter-spacing=\"0.20em\" fill=\"currentColor\" opacity=\"0.85\">PURE COPPER, MADE TO LAST</text></svg>",
-        "logo_max_width_mobile": 90,
+        "logo_zoom_out": false,
+        "logo": "shopify://shop_images/logo-main.png",
+        "logo_svg": "",
+        "logo_max_width": 210,
+        "logo_mobile": "shopify://shop_images/logo-main.png",
+        "logo_svg_mobile": "",
+        "logo_max_width_mobile": 150,
         "menu_font_weight": "font-weight-normal",
         "logo_position": "logo-to-left",
         "classic_menu_position": "top-menu-to-left",
+        "break_main_menu_count": 3,
         "show_search": "closed",
         "icons_text": "hide",
         "icons_text_mobile": "hide",
@@ -360,38 +45,78 @@
         "image_overlay_opacity": 0,
         "image_overlay_color": "rgba(0,0,0,0)",
         "color_base": "rgba(0,0,0,0)",
-        "color_accent": "#7C6B4E",
+        "color_accent": "rgba(0,0,0,0)",
         "color_lines": "rgba(0,0,0,0)",
-        "color_menu_item": "#FFFFFF",
-        "color_menu_item_hover": "#F4EDE3",
-        "color_submenu_item": "#2B2118",
-        "color_submenu_item_hover": "#7C6B4E",
-        "color_submenu_background": "#FFFFFF",
-        "color_submenu_shadow": "rgba(0,0,0,0.12)",
-        "color_icons": "#FFFFFF",
-        "color_icons_text": "#FFFFFF",
-        "color_icons_hover": "#F4EDE3",
-        "color_icons_text_hover": "#F4EDE3",
-        "color_counter": "#7C6B4E",
-        "color_counter_hover": "#7C6B4E",
-        "color_counter_text": "#FFFFFF",
-        "color_counter_text_hover": "#FFFFFF",
-        "color_input_background": "#FFFFFF",
-        "color_input_border": "#FFFFFF",
-        "color_input_text": "#2B2118",
-        "color_input_icon": "#2B2118",
-        "color_input_background_hover": "#FFFFFF",
+        "color_menu_item": "rgba(0,0,0,0)",
+        "color_menu_item_hover": "rgba(0,0,0,0)",
+        "color_submenu_item": "rgba(0,0,0,0)",
+        "color_submenu_item_hover": "rgba(0,0,0,0)",
+        "color_submenu_background": "rgba(0,0,0,0)",
+        "color_submenu_shadow": "rgba(0,0,0,0)",
+        "color_icons": "rgba(0,0,0,0)",
+        "color_icons_text": "rgba(0,0,0,0)",
+        "color_icons_hover": "rgba(0,0,0,0)",
+        "color_icons_text_hover": "rgba(0,0,0,0)",
+        "color_counter": "rgba(0,0,0,0)",
+        "color_counter_hover": "rgba(0,0,0,0)",
+        "color_counter_text": "rgba(0,0,0,0)",
+        "color_counter_text_hover": "rgba(0,0,0,0)",
+        "color_input_background": "rgba(0,0,0,0)",
+        "color_input_border": "rgba(0,0,0,0)",
+        "color_input_text": "rgba(0,0,0,0)",
+        "color_input_icon": "rgba(0,0,0,0)",
+        "color_input_background_hover": "rgba(0,0,0,0)",
         "color_input_border_hover": "rgba(0,0,0,0)",
         "color_input_outline_hover": "rgba(0,0,0,0)",
-        "color_input_text_hover": "#2B2118",
-        "color_input_icon_hover": "#2B2118"
+        "color_input_text_hover": "rgba(0,0,0,0)",
+        "color_input_icon_hover": "rgba(0,0,0,0)",
+        "color_search_heading": "rgba(0,0,0,0)",
+        "color_search_link": "rgba(0,0,0,0)",
+        "color_search_link_hover": "rgba(0,0,0,0)",
+        "color_search_product_vendor": "rgba(0,0,0,0)",
+        "color_search_product_name": "rgba(0,0,0,0)",
+        "color_search_product_name_hover": "rgba(0,0,0,0)",
+        "color_search_product_price": "rgba(0,0,0,0)",
+        "color_search_product_price_sale": "rgba(0,0,0,0)",
+        "color_search_product_price_old": "rgba(0,0,0,0)",
+        "color_search_show_all": "rgba(0,0,0,0)",
+        "color_search_show_all_hover": "rgba(0,0,0,0)",
+        "color_search_lines": "rgba(0,0,0,0)",
+        "color_search_background": "rgba(0,0,0,0)",
+        "color_search_shadow": "rgba(0,0,0,0)",
+        "color_account_heading": "rgba(0,0,0,0)",
+        "color_account_background": "rgba(0,0,0,0)",
+        "color_account_shadow": "rgba(0,0,0,0)",
+        "show_button_bg": true,
+        "color_button": "rgba(0,0,0,0)",
+        "color_button_gradient": "",
+        "color_button_border": "rgba(0,0,0,0)",
+        "color_button_text": "rgba(0,0,0,0)",
+        "show_button_bg_hover": true,
+        "color_button_hover": "rgba(0,0,0,0)",
+        "color_button_gradient_hover": "",
+        "color_button_border_hover": "rgba(0,0,0,0)",
+        "color_button_text_hover": "rgba(0,0,0,0)",
+        "show_shadow_button": true,
+        "color_shadow_button": "rgba(0,0,0,0)",
+        "color_shadow_hover_button": "rgba(0,0,0,0)",
+        "show_button_bg2": true,
+        "color_button2": "rgba(0,0,0,0)",
+        "color_button_gradient2": "",
+        "color_button_border2": "rgba(0,0,0,0)",
+        "color_button_text2": "rgba(0,0,0,0)",
+        "show_button_bg_hover2": true,
+        "color_button_hover2": "rgba(0,0,0,0)",
+        "color_button_gradient_hover2": "",
+        "color_button_border_hover2": "rgba(0,0,0,0)",
+        "color_button_text_hover2": "rgba(0,0,0,0)",
+        "show_shadow_button2": true,
+        "color_shadow_button2": "rgba(0,0,0,0)",
+        "color_shadow_hover_button2": "rgba(0,0,0,0)"
       }
     }
   },
   "order": [
-    "ticker_text_header",
-    "popup_search_modules_jWTP6h",
-    "megamenu_modules_YzEhUC",
     "header_Vx6JW4"
   ]
 }
