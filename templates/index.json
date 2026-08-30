@@ -52,9 +52,47 @@
         "color_media_arrows": "rgba(0,0,0,0)",
         "color_media_dots": "rgba(0,0,0,0)"
       }
+    },
+    "kansawala_hero_video_idqzRE": {
+      "type": "kansawala-hero-video",
+      "name": "Luxury Video Hero (Kansawala Style)",
+      "settings": {
+        "enable_header_overlay": false,
+        "logo_image": "shopify://shop_images/logo-main.png",
+        "logo_width": 260,
+        "logo_text": "COPPERIQUE",
+        "menu": "main-menu",
+        "video_url": "",
+        "video_url_mobile": "",
+        "overlay_opacity": 70,
+        "badge_text": "Kansa",
+        "title": "India's Oldest Metal, Still Hand-Made.",
+        "sub_title": "By one family, in Sihor, since 1945.",
+        "btn_label": "SHOP NOW",
+        "btn_link": "",
+        "secondary_btn_label": "",
+        "secondary_btn_link": "",
+        "show_stats": true,
+        "stat_1_num": "4.7 ★",
+        "stat_1_label": "From 1,067+ families",
+        "stat_2_num": "75+",
+        "stat_2_label": "Years of craftsmanship",
+        "show_bottom_ticker": true,
+        "ticker_item_1": "Pure 78:22 Kansa",
+        "ticker_item_2": "Hand-Beaten in Sihor",
+        "ticker_item_3": "Lifetime Buy-Back",
+        "ticker_item_4": "COD & Easy Returns",
+        "ticker_bg": "#FAF5EE",
+        "ticker_text_color": "#6B3C23",
+        "corner_radius": 20,
+        "side_padding": 16,
+        "desktop_height": "680px",
+        "mobile_height": "620px"
+      }
     }
   },
   "order": [
-    "banners_NJG4K9"
+    "banners_NJG4K9",
+    "kansawala_hero_video_idqzRE"
   ]
 }
