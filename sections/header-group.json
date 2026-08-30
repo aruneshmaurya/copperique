@@ -11,6 +11,12 @@
   "name": "Header",
   "type": "header",
   "sections": {
+    "announcement_bar": {
+      "type": "announcement-bar-header",
+      "settings": {
+        "enable": true
+      }
+    },
     "header_dCe7BV": {
       "type": "header",
       "name": "t:header.header_classic",
@@ -115,6 +121,7 @@
     }
   },
   "order": [
+    "announcement_bar",
     "header_dCe7BV"
   ]
 }
