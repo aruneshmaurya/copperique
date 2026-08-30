@@ -6,6 +6,7 @@
   - Integrated luxury transparent overlay header menu (desktop & mobile drawer)
   - Desktop & Mobile HTML5 Autoplay Background Video with Fallback Posters
   - Triple scrim gradients for optimal text & menu contrast
+  - Absolute bottom-anchored content (never jumps to top, immune to screen height)
   - Frosted glass badge, high-end display typography, white pill CTA button
   - Dual trust metrics (Rating & Heritage years)
   - Optional bottom trust marquee ticker (Pure Kansa, Lifetime Buy-back, etc.)
@@ -15,11 +16,9 @@
 {%- liquid
   assign corner_radius = section.settings.corner_radius | default: 20
   assign side_padding = section.settings.side_padding | default: 16
-  assign top_margin = section.settings.top_margin | default: 0
+  assign top_margin = section.settings.top_margin | default: 6
   assign bottom_margin = section.settings.bottom_margin | default: 20
   assign overlay_opacity = section.settings.overlay_opacity | default: 70 | divided_by: 100.0
-  assign desktop_height = section.settings.desktop_height | default: '680px'
-  assign mobile_height = section.settings.mobile_height | default: '620px'
 -%}
 
 <style>
@@ -51,18 +50,18 @@
     box-sizing: border-box;
   }
 
-  /* Inner Hero Card */
+  /* Inner Hero Card - Exact Kansawala Proportions */
   .kansawala-hero-card {
     position: relative;
     border-radius: var(--hero-radius);
     overflow: hidden;
     width: 100%;
-    min-height: {{ desktop_height }};
+    aspect-ratio: 2560 / 1290;
+    min-height: 560px;
+    max-height: 780px;
     background-color: #1A1410;
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    box-shadow: 0 12px 36px rgba(107, 60, 35, 0.08);
   }
 
   /* Media Background Layer */
@@ -87,7 +86,7 @@
     display: none;
   }
 
-  /* Refined Scrim Gradients for 100% Contrast (Top for Header, Bottom for Text) */
+  /* Refined Scrim Gradients for 100% Contrast */
   .kansawala-hero-scrim {
     position: absolute;
     inset: 0;
@@ -100,10 +99,13 @@
   }
 
   /* -------------------------------------------------------------------------
-     OVERLAY NAVIGATION HEADER (KANSAWALA LUXURY STYLE)
+     OVERLAY NAVIGATION HEADER (POSITIONED ABSOLUTE AT TOP)
      ------------------------------------------------------------------------- */
   .kansawala-hero-header {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 10;
     display: flex;
     align-items: center;
@@ -187,7 +189,7 @@
     top: 100%;
     left: 50%;
     transform: translateX(-50%) translateY(10px);
-    background: rgba(28, 20, 15, 0.92);
+    background: rgba(28, 20, 15, 0.94);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.12);
@@ -283,7 +285,7 @@
     background: transparent;
     border: none;
     color: #FFFFFF;
-    padding: 6px;
+    padding: 4px;
     cursor: pointer;
   }
 
@@ -293,22 +295,28 @@
   }
 
   /* -------------------------------------------------------------------------
-     HERO CONTENT & METRICS (LOWER AREA)
+     HERO CONTENT & METRICS (ABSOLUTELY ANCHORED TO BOTTOM)
      ------------------------------------------------------------------------- */
   .kansawala-hero-bottom {
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     z-index: 10;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     gap: 40px;
-    padding: 0 65px 75px 65px;
+    padding: 0 70px 65px 65px;
     width: 100%;
     box-sizing: border-box;
   }
 
   .kansawala-hero-content {
     max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   /* Frosted Glass Pill Badge ("Kansa" / "Pure Copper") */
@@ -325,29 +333,29 @@
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     background: rgba(250, 245, 238, 0.16);
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     text-transform: capitalize;
   }
 
   /* Hero Main Title */
   .kansawala-hero-title {
     font-family: "Instrument Sans", "Helvetica Neue", "Inter", sans-serif;
-    font-size: 54px;
+    font-size: 52px;
     font-weight: 600;
     line-height: 1.1;
     color: var(--hero-title-color);
-    margin: 0 0 16px 0;
+    margin: 0 0 14px 0;
     letter-spacing: -0.5px;
   }
 
   /* Hero Subtitle */
   .kansawala-hero-sub {
     font-family: "Instrument Sans", "Helvetica Neue", "Inter", sans-serif;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 400;
     line-height: 1.35;
     color: var(--hero-sub-color);
-    margin: 0 0 28px 0;
+    margin: 0 0 24px 0;
     opacity: 0.95;
   }
 
@@ -451,7 +459,7 @@
   }
 
   /* -------------------------------------------------------------------------
-     BOTTOM TRUST MARQUEE TICKER (Pure Kansa, Lifetime Buy-Back, etc.)
+     BOTTOM TRUST MARQUEE TICKER
      ------------------------------------------------------------------------- */
   .kansawala-bottom-ticker {
     width: 100%;
@@ -507,12 +515,8 @@
   }
 
   @keyframes kansawalaTickerScroll {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
   }
 
   /* -------------------------------------------------------------------------
@@ -612,9 +616,13 @@
   /* -------------------------------------------------------------------------
      RESPONSIVE BREAKPOINTS
      ------------------------------------------------------------------------- */
-  @media (max-width: 1024px) {
+  @media (max-width: 1200px) {
+    .kansawala-hero-card {
+      aspect-ratio: 16 / 9;
+      min-height: 520px;
+    }
     .kansawala-hero-bottom {
-      padding: 0 40px 50px 40px;
+      padding: 0 45px 50px 45px;
     }
     .kansawala-hero-title {
       font-size: 42px;
@@ -627,14 +635,27 @@
     }
   }
 
+  @media (max-width: 900px) {
+    .kansawala-hero-bottom {
+      padding: 0 32px 40px 32px;
+      gap: 24px;
+    }
+    .kansawala-hero-title {
+      font-size: 36px;
+    }
+  }
+
   @media (max-width: 767px) {
     #shopify-section-{{ section.id }} {
       --hero-side-pad: 8px;
       --hero-radius: 16px;
+      --hero-top-margin: 4px;
     }
 
     .kansawala-hero-card {
-      min-height: {{ mobile_height }};
+      aspect-ratio: auto;
+      min-height: 560px;
+      height: 82vh;
     }
 
     .kansawala-hero-media .desktop-media {
@@ -673,19 +694,20 @@
     .kansawala-hero-bottom {
       flex-direction: column;
       align-items: flex-start;
-      padding: 0 16px 28px 16px;
-      gap: 24px;
+      padding: 0 20px 32px 20px;
+      gap: 22px;
     }
 
     .kansawala-hero-title {
-      font-size: 30px;
-      line-height: 1.15;
-      word-break: break-word;
+      font-size: clamp(22px, 6.4vw, 28px);
+      line-height: 1.22;
+      word-break: normal;
+      overflow-wrap: normal;
     }
 
     .kansawala-hero-sub {
       font-size: 15px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .kansawala-hero-btn {
@@ -791,7 +813,7 @@
       <span class="kansawala-hero-scrim"></span>
     </div>
 
-    <!-- Integrated Overlay Navigation Header -->
+    <!-- Integrated Overlay Navigation Header (Positioned at Top) -->
     {%- if section.settings.enable_header_overlay -%}
       <header class="kansawala-hero-header">
         
@@ -905,7 +927,7 @@
       </header>
     {%- endif -%}
 
-    <!-- Lower Content & Social Proof Metrics -->
+    <!-- Lower Content & Social Proof Metrics (Anchored to Bottom) -->
     <div class="kansawala-hero-bottom">
       <div class="kansawala-hero-content">
         {%- if section.settings.badge_text != blank -%}
@@ -913,7 +935,7 @@
         {%- endif -%}
 
         {%- if section.settings.title != blank -%}
-          <h1 class="kansawala-hero-title">{{ section.settings.title | escape }}</h1>
+          <h1 class="kansawala-hero-title">{{ section.settings.title | newline_to_br }}</h1>
         {%- endif -%}
 
         {%- if section.settings.sub_title != blank -%}
@@ -1136,9 +1158,9 @@
       "label": "Pill Badge Text (e.g. Kansa / Pure Copper)"
     },
     {
-      "type": "text",
+      "type": "textarea",
       "id": "title",
-      "default": "India's Oldest Metal, Still Hand-Made.",
+      "default": "India's Oldest Metal,\nStill Hand-Made.",
       "label": "Main Heading"
     },
     {
@@ -1273,16 +1295,24 @@
       "label": "Card Side Inset / Margin"
     },
     {
-      "type": "text",
-      "id": "desktop_height",
-      "default": "680px",
-      "label": "Desktop Height (e.g. 680px, 80vh)"
+      "type": "range",
+      "id": "top_margin",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 6,
+      "label": "Top Spacing (Gap below Announcement Bar)"
     },
     {
-      "type": "text",
-      "id": "mobile_height",
-      "default": "620px",
-      "label": "Mobile Height (e.g. 620px, 85vh)"
+      "type": "range",
+      "id": "bottom_margin",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20,
+      "label": "Bottom Spacing"
     }
   ],
   "presets": [
